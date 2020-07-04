@@ -15,7 +15,12 @@ export class PricingCard extends Component {
              buttonTextColor:'white',
              transition:'.6s ease',
              bottomHeight:'0%',
-             priceColor:'black'
+             priceColor:'black',
+             toggleColor:this.props.toggleColor,
+             toggleBgColor:this.props.toggleBgColor,
+             toggleSetting:'M',
+             toggleActive:false,
+             billingCycle:'month'
         }
     }
     
@@ -25,7 +30,7 @@ export class PricingCard extends Component {
             width:'200px',
             boxShadow:'5px 4px 4px rgba(0, 0, 0, 0.25)',
             borderRadius:'7.5px',
-            margin:'1rem 1.5rem',
+            margin:'25px',
             transform:this.state.transform,
             transition:this.state.transition
         }
@@ -62,6 +67,17 @@ export class PricingCard extends Component {
             paddingRight:'25px',
             backgroundColor:this.state.bottomBgColor
         }
+        const toggleStyle={
+            height:'20px',
+            width:'20%',
+            borderRadius:'10px',
+            backgroundColor:this.state.toggleBgColor,
+            color:this.state.toggleColor,
+            fontFamily:'Montserrat',
+            fontWeight:'700',
+            cursor:'pointer',
+            transition:this.state.transition
+        }
         return (
             <div onMouseEnter={()=>{
                 this.setState({
@@ -76,7 +92,29 @@ export class PricingCard extends Component {
             style={cardStyle}>
                 <div style={topStyle}>
         <h2 style={{margin:'0'}}>{this.state.plan}</h2>
-                    <h3 style={{margin:'0', color:this.state.priceColor,transition:this.state.transition}}>{this.state.price}<br/>/month</h3>
+        <div onClick={()=>{
+            if(!this.state.toggleActive){
+                this.setState({
+                    toggleSetting:'Y',
+                    price:12*this.props.price,
+                    toggleActive:true,
+                    toggleBgColor:this.props.toggleColor,
+                    toggleColor:this.props.toggleBgColor,
+                    billingCycle:'year'
+                })
+            }
+            else{
+                this.setState({
+                    toggleSetting:'M',
+                    price:this.props.price,
+                    toggleActive:false,
+                    toggleBgColor:this.props.toggleBgColor,
+                    toggleColor:this.props.toggleColor,
+                    billingCycle:'month'
+                })
+            }
+        }} style={toggleStyle}>{this.state.toggleSetting}</div>
+                    <h3 style={{margin:'0', color:this.state.priceColor,transition:this.state.transition}}>{`$${this.state.price}`}<br/>/{this.state.billingCycle}</h3>
                     <div onMouseEnter={()=>{
                         this.setState({
                             bottomBgColor:'#b162d1',
@@ -99,12 +137,12 @@ export class PricingCard extends Component {
                     }}
                     onClick={()=>{
                         this.setState({
-                            bottomBgColor:'#ffffff',
-                            bottomTextColor:'black',
-                            buttonBgColor:'#b162d1',
-                            buttonTextColor:'white',
-                            bottomHeight:'0%',
-                            priceColor:'black'
+                            bottomBgColor:'#b162d1',
+                            bottomTextColor:'white',
+                            buttonBgColor:'white',
+                            buttonTextColor:'#b162d1',
+                            bottomHeight:'63%',
+                            priceColor:'green'
                         })
                     }}
                     style={buttonStyle}>Get Started</div>
