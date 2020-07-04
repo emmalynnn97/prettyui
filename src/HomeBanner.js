@@ -29,7 +29,8 @@ export class HomeBanner extends Component {
           }
           const homeBannerCopyStyle = {
             fontFamily:'Source Sans Pro',
-            fontSize:'18px'
+            fontSize:'18px',
+            lineHeight:2
           }
         return (
             <div style={homeBannerStyle}>

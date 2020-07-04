@@ -8,7 +8,7 @@ function App() {
     display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        paddingTop:'50px'
+        paddingTop:'100px'
   }
   const appStyle={
     display:'flex',
@@ -43,7 +43,7 @@ function App() {
        </div>
      </div>
      <div style={rightStyle}>
-       <HomeBanner heading='Welcome to Prettyui' copy='Prettyui is a design system created by Emma Lynn Guy'/>
+       <HomeBanner heading='Welcome to Prettyui' copy='Prettyui is a design system created by Emma Lynn Guy. It was developed with minimalism and aesthetics in mind. Use Prettyui to build out complex websites, templates, and themes. '/>
      </div>
      </div>
   </>
