@@ -1,14 +1,12 @@
 import React from 'react';
-import { linkTo } from '@storybook/addon-links';
-import { Welcome } from '@storybook/react/demo';
+import PricingCard from '../PricingCard'
+
 
 export default {
-  title: 'Welcome',
-  component: Welcome,
+  title: 'Pricing Card',
+  component: PricingCard,
 };
+export const pricingcard = ()=><PricingCard/>
 
-export const ToStorybook = () => <Welcome showApp={linkTo('Button')} />;
 
-ToStorybook.story = {
-  name: 'to Storybook',
-};
+
